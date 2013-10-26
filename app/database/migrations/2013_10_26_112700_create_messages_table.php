@@ -12,6 +12,18 @@ class CreateMessagesTable extends Migration {
 	public function up()
 	{
 		//
+        Schema::create('messages', function($table)
+        {
+            $table->increments('id');
+            $table->string('sender');
+            $table->string('content');
+            $table->string('mime_type');
+            $table->string('recipient');
+            // one of queued, delivered, deleted
+            $table->string('state');
+            $table->integer('tries');
+            $table->timestamps();
+        });
 	}
 
 	/**
@@ -21,7 +33,7 @@ class CreateMessagesTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+        Schema::drop('messages');
 	}
 
 }
