@@ -11,10 +11,13 @@ class QueueController extends \BaseController
 
     /**
     * Show a list of Messages
+    * @todo accept filters, by default only show queued messsages
+    * @todo some sort of pagination
     */
     public function index()
     {
-        return 'Messages';
+        $messages = [];
+        return View::make('messages')->with('messages', $messages);
     }
 }
 
